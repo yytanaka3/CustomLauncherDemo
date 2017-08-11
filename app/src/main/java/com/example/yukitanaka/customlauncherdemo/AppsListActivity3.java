@@ -3,21 +3,21 @@ package com.example.yukitanaka.customlauncherdemo;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-/* おしゃべり　関連 */
-public class AppsListActivity extends AppCompatActivity {
+/* 調べ物　関連 */
+public class AppsListActivity3 extends AppCompatActivity {
 
     private PackageManager manager;
     private List<AppDetail> apps;
@@ -45,9 +45,8 @@ public class AppsListActivity extends AppCompatActivity {
         for(ResolveInfo ri : availableActivities) {
             String appname=ri.activityInfo.packageName;
 
-            //おしゃべり関連のアプリ抽出
-            if(appname.indexOf("carriermail")!=-1 ||appname.indexOf("dialer")!=-1
-                    ||appname.indexOf("contact")!=-1||appname.indexOf("ims")!=-1) {
+            if(appname.indexOf("chrome")!=-1 || appname.indexOf("search")!=-1
+                    ||appname.indexOf("map")!=-1||appname.indexOf("sfrc")!=-1) {
                 AppDetail app = new AppDetail();
                 app.label = ri.loadLabel(manager);
                 app.name = ri.activityInfo.packageName;
@@ -90,7 +89,7 @@ public class AppsListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 Intent i = manager.getLaunchIntentForPackage(apps.get(position).name.toString());
-                AppsListActivity.this.startActivity(i);
+                AppsListActivity3.this.startActivity(i);
 
             }
     });
